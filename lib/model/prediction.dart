@@ -35,6 +35,8 @@ class Prediction {
   List<String>? types;
   String? lat;
   String? lng;
+  String? formattedAddress;  
+  String? name;
 
   Prediction(
       {this.description,
@@ -46,7 +48,9 @@ class Prediction {
       this.terms,
       this.types,
       this.lat,
-      this.lng});
+      this.lng,
+      this.formattedAddress,
+      this.name});
 
   Prediction.fromJson(Map<String, dynamic> json) {
     description = json['description'];
@@ -71,6 +75,8 @@ class Prediction {
     types = json['types'].cast<String>();
     lat = json['lat'];
     lng = json['lng'];
+    formattedAddress = json['formatted_address'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -92,7 +98,8 @@ class Prediction {
     data['types'] = this.types;
     data['lat'] = this.lat;
     data['lng'] = this.lng;
-
+    data['formatted_address'] = this.formattedAddress;
+    data['name'] = this.name;
     return data;
   }
 }
